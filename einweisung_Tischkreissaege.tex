@@ -1,0 +1,239 @@
+% !TeX spellcheck = de_DE_frami
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COPYRIGHT: (C) 2012-2026 FAU FabLab and others
+% CC-BY-SA 3.0
+% Text in eigenen Worten, KEINE Passagen oder Abbildungen aus der
+% Festool-Betriebsanleitung übernehmen (siehe README, Abschnitt Lizenz).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\basedir}{fablab-document}
+\documentclass{\basedir/fablab-document}
+
+\usepackage{amssymb}
+\usepackage{eurosym}
+\usepackage{textcomp}
+\usepackage{tabularx} % Tabellen mit bestimmtem Breitenverhältnis der Spalten
+\usepackage{multirow}
+\usepackage{todonotes}
+\usepackage{caption}
+\usepackage{qrcode}
+\usetikzlibrary{calc}
+% Nummer eines Bauteils wie in der Übersichtsskizze, z.B. \teil{3}
+\newcommand{\teil}[1]{\tikz[baseline=(n.base)]\node[circle, draw=black, fill=white, line width=0.8pt, minimum size=3.8mm, inner sep=0pt, font=\tiny\bfseries](n){#1};}
+% Sicherheitszeichen (ISO 7010) aus fablab-document
+\newcommand{\zeichen}[1]{\includegraphics[height=1.4cm]{\basedir/ba-symbole/#1}}
+
+\renewcommand{\texteuro}{\euro}
+
+\date{\today}
+% Versionsnummer: version.tex wird von der GitHub Action erzeugt,
+% lokal steht stattdessen "Entwurf" mit Datum in der Fußzeile.
+\InputIfFileExists{version}{}{\newcommand{\Version}{Entwurf \today}}
+\fancyfoot[R]{Version \Version}
+\author{kontakt@fablab.fau.de}
+\title{Einweisung Festool Tischkreissäge CSC SYS 50}
+
+\begin{document}
+
+	\maketitle
+	\begin{center}
+		Für die Akku-Tischkreissäge \textbf{Festool CSC SYS 50 EBI}\\[1mm]
+		{\small Version \Version}
+	\end{center}
+
+	\textbf{Nur eingewiesene Personen dürfen die Tischkreissäge benutzen.}
+	Wenn du noch nicht eingewiesen bist, frage die Betreuer:innen. Die Einweisung gilt nur nach Unterschrift auf der Einweisungsliste.
+
+	\begin{center}
+		\zeichen{M003}\quad\zeichen{M004}\quad\zeichen{P028}\quad\zeichen{W024}
+	\end{center}
+
+	\section{Regeln und Sicherheit}
+
+	\begin{itemize}
+		\item Nie ohne \textbf{Spaltkeil} sägen. Die \textbf{Schutzhaube} immer verwenden, wenn der Schnitt es zulässt.
+		\item Hände nie in die Verlängerung des Sägeblatts bringen, weder vor noch hinter dem Blatt. Kurz vor dem Blatt den \textbf{Schiebestock} nehmen.
+		\item Schmale Werkstücke am Parallelanschlag, Querschnitte mit Schiebeschlitten und Winkelanschlag führen. \textbf{Nie freihändig} sägen und nie Parallel- und Winkelanschlag gleichzeitig verwenden.
+		\item Seitlich neben der Schnittlinie stehen, nicht direkt dahinter (Rückschlag).
+		\item Beim Sägen \textbf{keine Handschuhe}, keine weite Kleidung, lange Haare zusammenbinden.
+		\item Gehörschutz und Schutzbrille tragen, immer die Absaugung anschließen.
+		\item Abgeschnittene Reste erst entfernen, wenn das Sägeblatt steht.
+		\item Vor Einstellarbeiten, Sägeblattwechsel und Wechsel von Spaltkeil oder Haube die \textbf{Akkus entnehmen}.
+		\item Schäden sofort melden und die Säge nicht weiter benutzen: \texttt{kontakt@fablab.fau.de}.
+	\end{itemize}
+
+	\renewcommand{\contentsname}{Inhaltsverzeichnis / Arbeitsablauf}
+	\setcounter{tocdepth}{2}
+	\tableofcontents
+	\newpage
+
+	\section{Die Säge und ihre Anleitung}
+
+	\begin{center}
+		\begin{tabular}{r|l}
+			Hersteller & Festool \\
+			Produktname & Akku-Tischkreissäge CSC SYS 50 EBI \\
+			Akku & $2 \times 18\,\mathrm{V}$ \\
+			Leerlaufdrehzahl & $4.500 - 6.800\,\mathrm{min}^{-1}$ \\
+			\multirow{3}{*}{Schnitthöhe} & $0 - 48\,\mathrm{mm}$ bei 0\textdegree \\
+			 & $0 - 34\,\mathrm{mm}$ bei 45\textdegree \\
+			 & $21 - 32\,\mathrm{mm}$ bei $-10$\textdegree \\
+			Neigung des Sägeblatts & $-10$\textdegree{} bis $47$\textdegree \\
+			Parallelschnittbreite & max. $280\,\mathrm{mm}$ \\
+			Sägeblatt & $\varnothing\,168\,\mathrm{mm}$, Bohrung $20\,\mathrm{mm}$ \\
+		\end{tabular}
+	\end{center}
+
+	Diese Einweisung fasst die Regeln des FabLabs zusammen. Sie ersetzt nicht die Betriebsanleitung des Herstellers: Die \textbf{Originalbetriebsanleitung} liegt der Maschine bei. Details, die hier nicht wiederholt werden (Drehzahlstufen je Material, Favoriten im Display, Zubehör), stehen dort.
+
+	\begin{center}
+		\begin{tabular}{cc}
+			\qrcode[height=2.2cm]{https://www.festool.de/bedienungsanleitungen} &
+			\qrcode[height=2.2cm]{https://www.festool.de/produkte/saegen/tischkreissaege/576820---csc-sys-50} \\[1mm]
+			\href{https://www.festool.de/bedienungsanleitungen}{Bedienungsanleitungen} &
+			\href{https://www.festool.de/produkte/saegen/tischkreissaege/576820---csc-sys-50}{CSC SYS 50 bei Festool}
+		\end{tabular}
+	\end{center}
+
+	\textbf{Bestimmungsgemäße Verwendung:} Die Tischkreissäge ist für gerade Längs- und Querschnitte in Holz, Holzwerkstoffen und Kunststoffen gedacht, mit passendem Sägeblatt auch in Aluminium. Sie steht dabei fest auf einer ebenen, stabilen Unterlage. Nur Sägeblätter verwenden, die laut Betriebsanleitung für die Maschine zugelassen und für das Material geeignet sind.
+
+	\subsection{Die wichtigsten Teile}
+	\label{sec:teile}
+
+	\begin{center}
+		\input{zeichnungen/uebersicht}\\[1mm]
+		{\footnotesize Schematische Skizze (Draufsicht), nicht maßstäblich. Die Lage einzelner Teile an der Maschine kann abweichen.}
+	\end{center}
+
+	\begin{center}
+		\small
+		\renewcommand{\arraystretch}{1.25}
+		\renewcommand{\tabularxcolumn}[1]{m{#1}}
+		\begin{tabularx}{\textwidth}{|c|m{40mm}|X|}
+			\hline
+			& \textbf{Teil} & \textbf{Wozu} \\ \hline
+			\teil{1} & Sägeblatt & Ragt nur so weit aus dem Tisch, wie für den Schnitt nötig. Höhe und Neigung werden elektrisch über das Display eingestellt. \\ \hline
+			\teil{2} & Spaltkeil & Hält den Schnitt hinter dem Blatt offen und verhindert so, dass das Werkstück das Blatt einklemmt und zurückgeschleudert wird. Immer montiert. \\ \hline
+			\teil{3} & Schutzhaube & Durchsichtige Haube über dem Blatt, sitzt am hohen Spaltkeil. Schützt vor Berührung und Spänen. \\ \hline
+			\teil{4} & Parallelanschlag & Führt das Werkstück bei Längsschnitten. Am Anschlag ist ein Schiebestock verstaut. \\ \hline
+			\teil{5} & Schiebeschlitten & Für Querschnitte: Das Werkstück liegt auf dem Schlitten und wird mit ihm am Blatt vorbeigeführt. \\ \hline
+			\teil{6} & Winkelanschlag & Auf dem Schlitten, für Quer- und Gehrungsschnitte. \\ \hline
+			\teil{7} & Display mit Drehrad & Einstellen von Schnitthöhe, Neigung und Drehzahl. \\ \hline
+			\teil{8} & Ein-/Ausschalter & Startet und stoppt den Motor. Im Notfall sofort ausschalten. \\ \hline
+			\teil{9} & Akkus ($2\times 18\,\mathrm{V}$) & Zum Einstellen, Umbauen und nach dem Sägen herausnehmen. \\ \hline
+			\teil{10} & Absauganschluss & Saugschlauch aufstecken. Nie ohne Absaugung sägen. \\ \hline
+		\end{tabularx}
+	\end{center}
+
+	\section{Vorbereitung}
+
+	\subsection{Checkliste vor dem Sägen}
+	Vor \textbf{jedem} Einsatz durchgehen:
+	\begin{itemize}
+		\item Säge steht fest und eben? Tisch frei von Werkzeug und Resten?
+		\item Sägeblatt scharf, unbeschädigt und für das Material geeignet?
+		\item Spaltkeil montiert, passend zum Schnitt? Schutzhaube montiert, wenn möglich?
+		\item Akkus geladen, Absaugung angeschlossen und eingeschaltet?
+		\item Werkstück frei von Nägeln, Schrauben und anderen Metallteilen? Gerade Kante zum Anlegen vorhanden?
+		\item Schnitthöhe passend eingestellt, Anschläge fest geklemmt?
+		\item Schiebestock griffbereit, Schutzausrüstung angelegt?
+		\item Arbeitsbereich frei, keine Unbeteiligten neben oder hinter der Säge?
+	\end{itemize}
+
+	\subsection{Schutzausrüstung}
+	\begin{itemize}
+		\item Gehörschutz
+		\item Schutzbrille
+		\item Staubmaske bei viel Staub (z.\,B. MDF, Hartholz)
+		\item Beim Sägen \textbf{keine Handschuhe} tragen: Das Blatt kann sie erfassen und die Hand mitziehen. Handschuhe nur bei stehender Maschine, z.\,B. beim Sägeblattwechsel.
+		\item Eng anliegende Kleidung, keine Schals, Kordeln oder Schmuck; lange Haare zusammenbinden.
+	\end{itemize}
+
+	\subsection{Material}
+	\begin{itemize}
+		\item Zugelassen: Holz und Holzwerkstoffe, Kunststoffe; Aluminium nur mit dafür geeignetem Sägeblatt.
+		\item Nicht zugelassen: Stahl und andere Metalle außer Aluminium, Stein, Material mit Nägeln oder Schrauben.
+		\item Keine Werkstücke, die sich nicht sicher am Anschlag oder auf dem Schlitten führen lassen (sehr klein, rund, verzogen).
+	\end{itemize}
+
+	\section{Sägen}
+
+	\subsection{Schnitthöhe einstellen}
+	Die Höhe des Blatts wird über das Display~\teil{7} eingestellt: Taste für die Höhe drücken und mit dem Drehrad den Wert wählen. Die Säge verstellt das Blatt dann selbst. Das Blatt soll nur wenige Millimeter (etwa eine Zahnhöhe) über das Werkstück hinausragen.
+
+	\subsection{Neigung einstellen}
+	Ebenso über das Display, mit der Taste für den Winkel und dem Drehrad. Bei geneigtem Blatt den Parallelanschlag so stellen, dass das Blatt vom Anschlag weg geneigt ist, damit kein Reststück zwischen Blatt und Anschlag eingeklemmt wird.
+
+	\subsection{Längsschnitt mit Parallelanschlag}
+	\begin{enumerate}
+		\item Checkliste durchgehen, Absaugung an, Schutzausrüstung tragen.
+		\item Parallelanschlag~\teil{4} auf das Maß stellen und klemmen. Bei niedrigen Werkstücken den Anschlag in die flache Stellung bringen.
+		\item Werkstück mit der geraden Kante an den Anschlag legen, noch ohne das Blatt zu berühren.
+		\item Seitlich neben der Schnittlinie stehen und die Säge einschalten~\teil{8}. Warten, bis das Blatt die volle Drehzahl hat.
+		\item Werkstück gleichmäßig nach vorn schieben, flach auf dem Tisch und an den Anschlag gedrückt. Die letzten 15\,cm vor dem Blatt und bei schmalen Teilen (unter etwa 12\,cm) mit dem Schiebestock schieben.
+		\item Werkstück ganz durch das Blatt schieben, bis es hinter dem Spaltkeil frei ist.
+		\item Säge ausschalten und warten, bis das Blatt steht. Erst dann Reste entfernen.
+	\end{enumerate}
+
+	\subsection{Querschnitt mit Schiebeschlitten}
+	\begin{enumerate}
+		\item Den Parallelanschlag weit weg vom Blatt stellen oder abnehmen, damit das abgeschnittene Stück nicht eingeklemmt wird.
+		\item Winkelanschlag~\teil{6} auf dem Schiebeschlitten~\teil{5} auf den Winkel einstellen und klemmen.
+		\item Werkstück an den Winkelanschlag legen und mit der Hand fest auf den Schlitten drücken, die Hand weit weg von der Schnittlinie.
+		\item Säge einschalten, Schlitten mit dem Werkstück gleichmäßig am Blatt vorbeischieben.
+		\item Säge ausschalten, Schlitten erst zurückziehen, wenn das Blatt steht.
+	\end{enumerate}
+
+	\subsection{Rückschlag}
+	Ein Rückschlag entsteht, wenn das Werkstück vom Blatt erfasst wird, weil es klemmt, sich dreht oder sich zwischen Blatt und Anschlag verkeilt. Es wird dann mit großer Kraft in Richtung der Bedienperson geschleudert. Er ist vermeidbar:
+	\begin{itemize}
+		\item Spaltkeil immer verwenden; mit der Schutzhaube zusätzlich die Rückschlagsicherung.
+		\item Werkstück immer an einem Anschlag führen, nie freihändig und nie gleichzeitig an Parallel- und Winkelanschlag.
+		\item Nicht hinter dem Blatt stehen, sondern seitlich davon.
+		\item Werkstück ohne Pause durchschieben; nicht während des Schnitts zurückziehen. Wenn es klemmt: ausschalten, Blatt stehen lassen, erst dann das Werkstück lösen.
+		\item Große Platten abstützen, damit sie nicht kippen.
+	\end{itemize}
+
+	\subsection{Nicht erlaubt}
+	Folgendes ist im FabLab \textbf{verboten}:
+	\begin{itemize}
+		\item Sägen ohne Spaltkeil oder mit manipulierter Schutzeinrichtung.
+		\item Freihändiges Sägen ohne Anschlag oder Schlitten.
+		\item Nuten, Falzen und verdeckte Schnitte ohne Rücksprache mit den Betreuer:innen.
+		\item Sägen mit Handschuhen.
+		\item Sägen ohne Absaugung.
+		\item Sägen von Metall außer Aluminium sowie von Stein und anderen nicht zugelassenen Materialien.
+		\item Verwenden nicht zugelassener, stumpfer oder beschädigter Sägeblätter.
+		\item Benutzen der Säge durch nicht eingewiesene Personen.
+	\end{itemize}
+
+	\section{Nach dem Sägen}
+
+	\begin{itemize}
+		\item Säge ausschalten, Blatt abwarten, Akkus entnehmen und zum Laden geben.
+		\item Säge und Arbeitsplatz absaugen, keine Späne oder Staub liegen lassen. Nicht mit Druckluft abblasen.
+		\item Schiebestock, Anschläge und Zubehör an ihren Platz zurücklegen.
+		\item Schäden, stumpfe Sägeblätter oder Probleme den Betreuer:innen melden.
+	\end{itemize}
+
+	\section{Infos für Betreuer:innen}
+
+	\subsection{Spaltkeil und Schutzhaube wechseln}
+	Zur Säge gehören ein niedriger Spaltkeil (für Schnitte, die nicht durch das ganze Werkstück gehen) und ein hoher Spaltkeil mit Schutzhaube und Rückschlagsicherung. Der Wechsel geht ohne Werkzeug bzw.\ mit dem mitgelieferten Innensechskantschlüssel; die genauen Schritte stehen in der Betriebsanleitung. Vorher immer die Akkus entnehmen.
+
+	\subsection{Sägeblattwechsel}
+	Nur durch Betreuer:innen, nur mit entnommenen Akkus. Schutzhandschuhe tragen, das Blatt ist scharf und kann heiß sein; vor dem Einschalten die Handschuhe wieder ausziehen. Die Drehrichtungspfeile auf Blatt und Maschine müssen übereinstimmen. Die genauen Schritte stehen in der Betriebsanleitung.
+
+	\subsection{Pflege und Prüfung}
+	\begin{itemize}
+		\item Säge, Tischeinlage und Absaugkanal regelmäßig von Staub reinigen.
+		\item Spaltkeil, Schutzhaube, Rückschlagsicherung und Sägeblatt regelmäßig prüfen.
+		\item Akkus und Ladegerät auf Schäden prüfen.
+	\end{itemize}
+
+	\section{Quellen}
+	Die Formulierungen dieser Einweisung und die Skizze in Abschnitt~\ref{sec:teile} sind eigenständig erstellt. Die Sicherheitszeichen nach ISO 7010 stammen aus \href{https://github.com/fau-fablab/fablab-document}{fablab-document}. Die technischen Daten beruhen auf öffentlich zugänglichen Herstellerangaben. Maßgeblich ist die Originalbetriebsanleitung von Festool, die der Maschine beiliegt (Links siehe oben). \enquote{Festool} ist eine Marke der Festool GmbH; dieses Dokument ist inoffiziell, wurde von Festool weder geprüft noch übernimmt Festool dafür eine Haftung.
+
+	\ccLicense{festool-tischkreissaege-einweisung}{Einweisung Festool-Tischkreissäge}
+
+\end{document}
