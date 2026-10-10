@@ -52,8 +52,8 @@ Lizenz
 [![Lizenz: CC BY-SA 3.0](https://licensebuttons.net/l/by-sa/3.0/de/88x31.png)</br>CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
 
 Die Einweisung ist selbst formuliert und enthält keine Texte oder Abbildungen aus der Festool-Betriebsanleitung.
-Die Übersicht in `zeichnungen/uebersicht.tex` ist eine selbst gezeichnete TikZ-Skizze, die Sicherheitszeichen
-(ISO 7010, gemeinfrei) kommen aus fablab-document.
+Die Fotos in `bilder/` sind selbst fotografiert (siehe `bilder/QUELLEN.md`), die Nummern der Bauteile werden
+per TikZ darübergelegt. Die Sicherheitszeichen (ISO 7010, gemeinfrei) kommen aus fablab-document.
 **Beim Bearbeiten nichts aus der Festool-Anleitung übernehmen, auch nicht sinngemäß Satz für Satz.** Bilder bitte
 selbst fotografieren oder nur mit freier, kompatibler Lizenz (z. B. CC BY-SA von Wikimedia Commons, mit Quellenangabe)
 verwenden.

@@ -18,8 +18,26 @@
 \usepackage{caption}
 \usepackage{qrcode}
 \usetikzlibrary{calc}
-% Nummer eines Bauteils wie in der Übersichtsskizze, z.B. \teil{3}
+% Nummer eines Bauteils wie in den Fotos, z.B. \teil{3}
 \newcommand{\teil}[1]{\tikz[baseline=(n.base)]\node[circle, draw=black, fill=white, line width=0.8pt, minimum size=3.8mm, inner sep=0pt, font=\tiny\bfseries](n){#1};}
+% Foto mit nummerierten Bauteilen: \fotomitnummern{Breite}{Datei}{\fotonr...}
+% Koordinaten relativ zum Foto: (0,0) unten links, (1,1) oben rechts.
+\tikzset{fotomarke/.style={circle, draw=black, fill=white, line width=1pt,
+	minimum size=5mm, inner sep=0pt, font=\small\bfseries}}
+% \fotolinie{Position der Nummer}{Bauteil}, für eine zweite Linie zur selben Nummer
+\newcommand{\fotolinie}[2]{%
+	\draw[white, line width=2pt, line cap=round] (#1) -- (#2);
+	\draw[black, line width=0.8pt] (#1) -- (#2);
+	\fill[black] (#2) circle[radius=0.7mm];}
+% \fotonr{Nummer}{Position der Nummer}{Bauteil}
+\newcommand{\fotonr}[3]{\fotolinie{#2}{#3}\node[fotomarke] at (#2) {#1};}
+\newcommand{\fotomitnummern}[3]{%
+	\begin{tikzpicture}
+		\node[anchor=south west, inner sep=0pt] (foto) at (0,0) {\includegraphics[width=#1]{#2}};
+		\begin{scope}[x={(foto.south east)}, y={(foto.north west)}]
+			#3
+		\end{scope}
+	\end{tikzpicture}}
 % Sicherheitszeichen (ISO 7010) aus fablab-document
 \newcommand{\zeichen}[1]{\includegraphics[height=1.4cm]{\basedir/ba-symbole/#1}}
 
@@ -101,13 +119,15 @@
 	\label{sec:teile}
 
 	\begin{center}
-		\input{zeichnungen/uebersicht}\\[1mm]
-		{\footnotesize Schematische Skizze (Draufsicht), nicht maßstäblich. Die Lage einzelner Teile an der Maschine kann abweichen.}
-	\end{center}
-
-	\begin{center}
-		\includegraphics[width=0.75\textwidth]{bilder/csc-vorn.jpg}\\[1mm]
-		{\footnotesize Die Säge im FabLab von vorn: links der Schiebeschlitten~\teil{5} mit Winkelanschlag~\teil{6}, in der Mitte das Display mit Drehrad~\teil{7}, rechts daneben der Ein-/Ausschalter~\teil{8}.\\
+		\fotomitnummern{\textwidth}{bilder/csc-vorn.jpg}{
+			\fotonr{3}{0.40,0.92}{0.50,0.80}
+			\fotonr{5}{0.22,0.93}{0.37,0.775}
+			\fotonr{6}{0.15,0.55}{0.33,0.68}
+			\fotonr{7}{0.36,0.12}{0.41,0.33}
+			\fotolinie{0.68,0.345}{0.585,0.37}
+			\fotonr{8}{0.68,0.345}{0.585,0.318}
+		}\\*[1mm]
+		{\footnotesize Die Säge im FabLab von vorn. Teile, die hier nicht zu sehen sind, zeigen die Fotos auf den folgenden Seiten.\\*
 		Foto: Michael Geiger / FAU FabLab, \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}}
 	\end{center}
 
@@ -118,16 +138,16 @@
 		\begin{tabularx}{\textwidth}{|c|m{40mm}|X|}
 			\hline
 			& \textbf{Teil} & \textbf{Wozu} \\ \hline
-			\teil{1} & Sägeblatt & Ragt nur so weit aus dem Tisch, wie für den Schnitt nötig. Höhe und Neigung werden elektrisch über das Display eingestellt. \\ \hline
-			\teil{2} & Spaltkeil & Hält den Schnitt hinter dem Blatt offen und verhindert so, dass das Werkstück das Blatt einklemmt und zurückgeschleudert wird. Immer montiert. \\ \hline
+			\teil{1} & Sägeblatt & Unter der Schutzhaube~\teil{3}. Ragt nur so weit aus dem Tisch, wie für den Schnitt nötig. Höhe und Neigung werden elektrisch über das Display eingestellt. \\ \hline
+			\teil{2} & Spaltkeil (Foto S.~\pageref{foto:systainer}) & Hält den Schnitt hinter dem Blatt offen und verhindert so, dass das Werkstück das Blatt einklemmt und zurückgeschleudert wird. Immer montiert. \\ \hline
 			\teil{3} & Schutzhaube & Durchsichtige Haube über dem Blatt, sitzt am hohen Spaltkeil. Schützt vor Berührung und Spänen. \\ \hline
-			\teil{4} & Parallelanschlag & Führt das Werkstück bei Längsschnitten. Am Anschlag ist ein Schiebestock verstaut. \\ \hline
+			\teil{4} & Parallelanschlag (Foto S.~\pageref{foto:systainer}) & Führt das Werkstück bei Längsschnitten. Am Anschlag ist ein Schiebestock verstaut. \\ \hline
 			\teil{5} & Schiebeschlitten & Für Querschnitte: Das Werkstück liegt auf dem Schlitten und wird mit ihm am Blatt vorbeigeführt. \\ \hline
 			\teil{6} & Winkelanschlag & Auf dem Schlitten, für Quer- und Gehrungsschnitte. \\ \hline
 			\teil{7} & Display mit Drehrad & Einstellen von Schnitthöhe, Neigung und Drehzahl. \\ \hline
 			\teil{8} & Ein-/Ausschalter & Startet und stoppt den Motor. Im Notfall sofort ausschalten. \\ \hline
-			\teil{9} & Akkus ($2\times 18\,\mathrm{V}$) & Zum Einstellen, Umbauen und nach dem Sägen herausnehmen. \\ \hline
-			\teil{10} & Absauganschluss & Saugschlauch aufstecken. Nie ohne Absaugung sägen. \\ \hline
+			\teil{9} & Akkus ($2\times 18\,\mathrm{V}$, Foto S.~\pageref{foto:akkus}) & Links an der Säge unter dem Schiebeschlitten. Zum Einstellen, Umbauen und nach dem Sägen herausnehmen. \\ \hline
+			\teil{10} & Absauganschluss & Hinten an der Säge. Saugschlauch aufstecken. Nie ohne Absaugung sägen. \\ \hline
 		\end{tabularx}
 	\end{center}
 
@@ -191,8 +211,14 @@
 	\end{enumerate}
 
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{bilder/csc-winkelanschlag.jpg}\\[1mm]
-		{\footnotesize Winkelanschlag~\teil{6} auf dem Schiebeschlitten~\teil{5}, darunter das Display~\teil{7} mit Schnitthöhe und Neigung.\\
+		\fotomitnummern{0.6\textwidth}{bilder/csc-winkelanschlag.jpg}{
+			\fotonr{5}{0.25,0.86}{0.50,0.86}
+			\fotonr{6}{0.30,0.25}{0.56,0.38}
+			\fotonr{7}{0.52,0.06}{0.62,0.17}
+			\fotolinie{0.965,0.10}{0.89,0.217}
+			\fotonr{8}{0.965,0.10}{0.89,0.156}
+		}\\*[1mm]
+		{\footnotesize Winkelanschlag~\teil{6} auf dem Schiebeschlitten~\teil{5}, darunter das Display~\teil{7} mit Schnitthöhe und Neigung.\\*
 		Foto: Michael Geiger / FAU FabLab, \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}}
 	\end{center}
 
@@ -229,8 +255,12 @@
 	\end{itemize}
 
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{bilder/csc-akkus.jpg}\\[1mm]
-		{\footnotesize Seitenansicht mit den beiden Akkus~\teil{9}.\\
+		\fotomitnummern{0.6\textwidth}{bilder/csc-akkus.jpg}{
+			\fotonr{5}{0.15,0.75}{0.30,0.60}
+			\fotolinie{0.50,0.12}{0.70,0.32}
+			\fotonr{9}{0.50,0.12}{0.30,0.32}
+		}\label{foto:akkus}\\*[1mm]
+		{\footnotesize Linke Seite der Säge mit den beiden Akkus~\teil{9} unter dem Schiebeschlitten~\teil{5}.\\*
 		Foto: Michael Geiger / FAU FabLab, \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}}
 	\end{center}
 
@@ -240,8 +270,13 @@
 	Zur Säge gehören ein niedriger Spaltkeil (für Schnitte, die nicht durch das ganze Werkstück gehen) und ein hoher Spaltkeil mit Schutzhaube und Rückschlagsicherung. Der Wechsel geht ohne Werkzeug bzw.\ mit dem mitgelieferten Innensechskantschlüssel; die genauen Schritte stehen in der Betriebsanleitung. Vorher immer die Akkus entnehmen.
 
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{bilder/csc-systainer.jpg}\\[1mm]
-		{\footnotesize Zubehör im Systainer, unter anderem Spaltkeil, Schutzhaube und Staubfangsack.\\
+		\fotomitnummern{0.6\textwidth}{bilder/csc-systainer.jpg}{
+			\fotonr{3}{0.42,0.47}{0.52,0.38}
+			\fotolinie{0.83,0.66}{0.60,0.55}
+			\fotonr{2}{0.83,0.66}{0.744,0.513}
+			\fotonr{4}{0.53,0.10}{0.531,0.306}
+		}\label{foto:systainer}\\*[1mm]
+		{\footnotesize Zubehör im Systainer: niedriger und hoher Spaltkeil~\teil{2}, Schutzhaube~\teil{3}, Parallelanschlag~\teil{4} und Staubfangsack.\\*
 		Foto: Michael Geiger / FAU FabLab, \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}}
 	\end{center}
 
@@ -256,7 +291,7 @@
 	\end{itemize}
 
 	\section{Quellen}
-	Die Formulierungen dieser Einweisung und die Skizze in Abschnitt~\ref{sec:teile} sind eigenständig erstellt. Die Fotos stammen von Michael Geiger / FAU FabLab und stehen unter der Lizenz \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}. Die Sicherheitszeichen nach ISO 7010 stammen aus \href{https://github.com/fau-fablab/fablab-document}{fablab-document}. Die technischen Daten beruhen auf öffentlich zugänglichen Herstellerangaben. Maßgeblich ist die Originalbetriebsanleitung von Festool, die der Maschine beiliegt (Links siehe oben). \enquote{Festool} ist eine Marke der Festool GmbH; dieses Dokument ist inoffiziell, wurde von Festool weder geprüft noch übernimmt Festool dafür eine Haftung.
+	Die Formulierungen dieser Einweisung sind eigenständig erstellt. Die Fotos stammen von Michael Geiger / FAU FabLab, stehen unter der Lizenz \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0} und wurden mit Nummern ergänzt. Die Sicherheitszeichen nach ISO 7010 stammen aus \href{https://github.com/fau-fablab/fablab-document}{fablab-document}. Die technischen Daten beruhen auf öffentlich zugänglichen Herstellerangaben. Maßgeblich ist die Originalbetriebsanleitung von Festool, die der Maschine beiliegt (Links siehe oben). \enquote{Festool} ist eine Marke der Festool GmbH; dieses Dokument ist inoffiziell, wurde von Festool weder geprüft noch übernimmt Festool dafür eine Haftung.
 
 	\ccLicense{festool-tischkreissaege-einweisung}{Einweisung Festool-Tischkreissäge}
 
