@@ -49,7 +49,7 @@ Technische Details zum Buildserver: [fau-fablab/buildserver](https://github.com/
 Lizenz
 ------
 
-[![Lizenz: CC BY-SA 3.0](https://licensebuttons.net/l/by-sa/3.0/de/88x31.png)</br>CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
+[![Lizenz: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/88x31.png)</br>CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
 Die Einweisung ist selbst formuliert und enthält keine Texte oder Abbildungen aus der Festool-Betriebsanleitung.
 Die Fotos in `bilder/` sind selbst fotografiert (siehe `bilder/QUELLEN.md`), die Nummern der Bauteile werden
